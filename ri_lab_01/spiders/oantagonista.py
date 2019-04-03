@@ -21,11 +21,31 @@ class OantagonistaSpider(scrapy.Spider):
         #
         # inclua seu código aqui
         #
+        
+        
+        for article in response.css('article'):
+            x = yield {
+				'titulo': article.css('div.container-post-home a.article_link::attr("title")').get(),
+                'secao': article.css('div.container-post-home a.article_link span.postmeta span.categoria').get(),
+                'data': article.css('div.container-post-home a.article_link span.postmeta time').get(),
+                'autor': article.css('div.container-post-home a.article_link span.postmeta div').get(),
+                'texto': article.css('div.container-post-home a.article_link p').get(),
+                'url': article.css('div.container-post-home a.article_link::attr("href")').get()
+            }
+            print '\n'
+            print 'Título :   ' + x['titulo']
+            print 'Seção :   ' + x['secao']
+            print 'Data :   ' + x['data']
+            print 'Autor :   ' + x['autor']
+            print 'Texto :   ' + x['texto']
+            print 'URL :   ' + x['url']
+            print '\n'
         page = response.url.split("/")[-2]
         filename = 'quotes-%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)
+        
         #
         #
         #

@@ -67,19 +67,19 @@ ROBOTSTXT_OBEY = True
 
 DOWNLOADER_MIDDLEWARES = {
    # USER_AGENTS
-   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-   'scrapy_useragents.downloadermiddlewares.useragents.UserAgentsMiddleware': 500,
-   # ROTATING_PROXY_LIST
-   'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
-   'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
+  'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+  'scrapy_useragents.downloadermiddlewares.useragents.UserAgentsMiddleware': 500,
+  # ROTATING_PROXY_LIST
+  'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+  'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
 }
 
 # Define used proxies
 ROTATING_PROXY_LIST = [
-  '189.51.153.195:57898', '45.162.37.79:8080',   '179.108.187.9:8080',
-  '177.23.104.38:61536',  '187.32.123.177:3128', '45.71.80.34:37122',
-  '45.162.37.79:8080',    '186.250.55.233:50741','179.108.187.9:8080',
-  '187.32.123.177:3128',  '187.32.123.177:3128', '177.72.92.24:23500'
+ '189.51.153.195:57898', '45.162.37.79:8080',   '179.108.187.9:8080',
+ '177.23.104.38:61536',  '187.32.123.177:3128', '45.71.80.34:37122',
+ '45.162.37.79:8080',    '186.250.55.233:50741','179.108.187.9:8080',
+ '187.32.123.177:3128',  '187.32.123.177:3128', '177.72.92.24:23500'
 ]
 
 # Enable or disable downloader middlewares

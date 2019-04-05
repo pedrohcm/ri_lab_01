@@ -83,14 +83,10 @@ class OantagonistaSpider(scrapy.Spider):
 
         yield {
             'title': encodeUTF8(response.css('h1.entry-title::text').get()),
-            # This source does not provide subtitles
-            'subtitle': 'None',
-            # Some articles have no author
+            'sub_title': '---',
             'author': getArticleAuthor(response.css('header.entry-header div::text').get()),
-            # Formats date to match (dd/mm/yyyy hh:mi:ss)
             'date': encodeUTF8(reverseDate(response.css('time.entry-date ::attr(datetime)').get())),
             'section': encodeUTF8(response.css('header.entry-header span.postmeta span.categoria a::text').get()),
-            # Joins paragraphs
             'text': encodeUTF8(getArticleText(response)),
             'url': response.request.url
         }
